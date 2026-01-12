@@ -6,7 +6,7 @@
 /*   By: oishchen <oishchen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 17:41:15 by oishchen          #+#    #+#             */
-/*   Updated: 2026/01/11 16:15:16 by oishchen         ###   ########.fr       */
+/*   Updated: 2026/01/12 19:17:02 by oishchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ _health(10),
 _energy(10),
 _attack(0)
 {
-    std::cout << MAGENTA ITALIC "Constructor is called\n" RESET;
+    std::cout << MAGENTA ITALIC << "ClapTrap " << _name << " a constructor is called\n" RESET;
 }
 
 ClapTrap::ClapTrap(const std::string &name) :
@@ -27,13 +27,38 @@ _health(10),
 _energy(10),
 _attack(0)
 {
-    std::cout << MAGENTA ITALIC "Named constructor is called\n" RESET;
+    std::cout << MAGENTA ITALIC << "ClapTrap " << _name << " a Named constructor is called\n" RESET;
+}
+
+ClapTrap::ClapTrap(const ClapTrap &other)
+{
+    std::cout << MAGENTA ITALIC "ClapTrap " << _name << " a Copy constructor called" RESET << std::endl;
+    if (this != &other)
+    {
+        this->_attack = other._attack;
+        this->_energy = other._energy;
+        this->_health = other._health;
+        this->_name = other._name;
+    }
+}
+
+ClapTrap& ClapTrap::operator=(const ClapTrap &other)
+{
+    std::cout << MAGENTA ITALIC "ClapTrap " << _name << " an Assignment operator is called\n" << std::endl;
+    if (this != &other)
+    {
+        this->_attack = other._attack;
+        this->_energy = other._energy;
+        this->_health = other._health;
+        this->_name = other._name;
+    }
+    return (*this);
 }
 
 ClapTrap::~ClapTrap()
 {
 {
-    std::cout << MAGENTA ITALIC "Destructor is called\n" RESET;
+    std::cout << MAGENTA ITALIC "For ClapTrap" << _name << " a destructor is called\n" RESET;
 }
 }
 
